@@ -11,7 +11,7 @@ gg:
 
 silva:
 	CLASSIFIER_NAME=silva-132-99 \
-	MEMORY_515_806=32000 \
+	MEMORY_515_806=64000 \
 	MEMORY_FULL=64000 \
 	SOURCE_SEQS=inputs/silva/silva132_99.fna \
 	SOURCE_TAX=inputs/silva/7_level_taxonomy.txt \
