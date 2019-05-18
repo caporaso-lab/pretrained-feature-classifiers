@@ -10,8 +10,7 @@
    tutorial is present in `inputs/validation-tests`, to be used for comparing
    `FeatureData[Taxonomy]` produced by the new classifiers. Consult the
    directory listing example, below.
-4. Ensure the validation outputs from the last classifier-training session are
-   present in `inputs/validation-tests`. Consult the directory listing example,
+4. Copy the taxonomies produced during the last classifier-training session from `<prior-session>/outputs/validation-tests` to `inputs/validation-tests`. Note: filenames will need to be changed in the process. Consult the directory listing example,
    below.
 5. Run `make all`. GG classifiers should be done in <1hr; Silva <24hrs.
 
