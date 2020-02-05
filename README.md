@@ -42,9 +42,6 @@
 │   └── validation-tests
 └── train.sh
 ```
-Prior to building new classifiers, you'll need to create an environment in monsoon, and install the latest stable
-release of SKLearn
-
 
 ### Installing a new version of scikit-learn in a production release of QIIME 2
 
