@@ -42,3 +42,20 @@
 │   └── validation-tests
 └── train.sh
 ```
+
+### Installing a new version of scikit-learn in a production release of QIIME 2
+
+```bash
+ssh $USER@monsoon.hpc.nau.edu
+module load anaconda
+wget https://data.qiime2.org/distro/core/qiime2-$RELEASE-py36-linux-conda.yml
+conda env create -n qiime2-$RELEASE-sklearn --file qiime2-$RELEASE-py36-linux-conda.yml
+conda activate qiime2-$RELEASE-sklearn
+conda remove q2-feature-classifier
+git clone https://github.com/qiime2/q2-feature-classifier
+cd q2-feature-classifier
+make install
+conda install -c conda-forge -c bioconda -c defaults scikit-learn=$VERSION
+conda install pytest
+make test
+```
