@@ -6,9 +6,9 @@ raw_seqs="outputs/intermediate/${CLASSIFIER_NAME}-raw-seqs.qza"
 culled_seqs="outputs/intermediate/${CLASSIFIER_NAME}-culled-seqs.qza"
 filtered_seqs="outputs/intermediate/${CLASSIFIER_NAME}-filtered-seqs.qza"
 discarded_seqs="outputs/intermediate/${CLASSIFIER_NAME}-length-discarded-seqs.qza"
-seqs="outputs/inputs/${CLASSIFIER_NAME}-seqs.qza"
+seqs="inputs/${CLASSIFIER_NAME}-seqs.qza"
 full_tax="outputs/intermediate/${CLASSIFIER_NAME}-tax-underep.qza"
-tax="outputs/inputs/${CLASSIFIER_NAME}-tax.qza"
+tax="inputs/${CLASSIFIER_NAME}-tax.qza"
 log_path="outputs/logs/%j_%x.txt"
 
 # Import

@@ -2,11 +2,11 @@
 
 set -e
 
-seqs="outputs/intermediate/${CLASSIFIER_NAME}-seqs.qza"
+seqs="inputs/${CLASSIFIER_NAME}-seqs.qza"
 seqs_515_806_underep="outputs/intermediate/${CLASSIFIER_NAME}-seqs-515-806-undereplicated.qza"
 seqs_515_806="outputs/intermediate/${CLASSIFIER_NAME}-seqs-515-806.qza"
 tax_515_806="outputs/intermediate/${CLASSIFIER_NAME}-tax-515-806.qza"
-tax="outputs/intermediate/${CLASSIFIER_NAME}-tax.qza"
+tax="inputs/${CLASSIFIER_NAME}-tax.qza"
 classifier="outputs/pretrained-classifiers/${CLASSIFIER_NAME}-nb-classifier.qza"
 classifier_515_806="outputs/pretrained-classifiers/${CLASSIFIER_NAME}-515-806-nb-classifier.qza"
 test_taxonomy="outputs/validation-tests/${CLASSIFIER_NAME}-test-taxonomy.qza"

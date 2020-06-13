@@ -2,8 +2,8 @@
 
 set -e
 
-seqs="outputs/inputs/${CLASSIFIER_NAME}-seqs.qza"
-tax="outputs/inputs/${CLASSIFIER_NAME}-tax.qza"
+seqs="inputs/${CLASSIFIER_NAME}-seqs.qza"
+tax="inputs/${CLASSIFIER_NAME}-tax.qza"
 log_path="outputs/logs/%j_%x.txt"
 
 SOURCE_SEQS=gg_13_8_otus/rep_set/99_otus.fasta
@@ -28,7 +28,6 @@ job_import_tax=$(
     sbatch \
         --parsable \
         --job-name "${CLASSIFIER_NAME}_import_tax" \
-        --dependency "afterok:${job_get_data}" \
         --time 10 \
         --output "${log_path}" \
             qiime tools import \
