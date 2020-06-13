@@ -25,6 +25,7 @@ getgg:
 getsilva:
 	VERSION=138 \
 	TARGET=SSURef_NR99 \
+	MEMORY=64000 \
 	CLASSIFIER_NAME=silva-138-99 \
 		./get_silva.sh
 

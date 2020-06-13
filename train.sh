@@ -15,7 +15,7 @@ eval_taxonomy="outputs/validation-tests/${CLASSIFIER_NAME}-test-taxonomy.qzv"
 eval_taxonomy_515_806="outputs/validation-tests/${CLASSIFIER_NAME}-test-515-806-taxonomy.qzv"
 crossval_results="outputs/validation-tests/${CLASSIFIER_NAME}-test-cross-validation.qzv"
 crossval_results_515_806="outputs/validation-tests/${CLASSIFIER_NAME}-test-515-806-cross-validation.qzv"
-obs_tax="outputs/intermediate/${CLASSIFIER_NAME}-test-cross-validation-predictions.qzv"
+obs_tax="outputs/intermediate/${CLASSIFIER_NAME}-test-cross-validation-predictions.qza"
 obs_tax_515_806="outputs/intermediate/${CLASSIFIER_NAME}-test-515-806-cross-validation-predictions.qzv"
 test_seqs="inputs/validation-tests/mp-rep-seqs.qza"
 expected="inputs/validation-tests/${CLASSIFIER_NAME}-expected-taxonomy.qza"
@@ -43,7 +43,7 @@ job_extract_reads=$(
 job_derep_seqs=$(
     sbatch \
         --parsable \
-        --mem "${MEMORY_515_806}" \
+        --mem "${MEMORY_FULL}" \
         --job-name "${CLASSIFIER_NAME}_derep" \
         --dependency "afterok:${job_extract_reads}" \
         --time 240 \

@@ -61,6 +61,7 @@ job_filter_seqs=$(
 job_derep_seqs=$(
     sbatch \
         --parsable \
+        --mem "${MEMORY}" \
         --job-name "${CLASSIFIER_NAME}_derep" \
         --dependency "afterok:${job_filter_seqs}" \
         --time 240 \
