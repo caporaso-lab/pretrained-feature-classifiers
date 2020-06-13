@@ -43,6 +43,7 @@ job_extract_reads=$(
 job_derep_seqs=$(
     sbatch \
         --parsable \
+        --mem "${MEMORY_515_806}" \
         --job-name "${CLASSIFIER_NAME}_derep" \
         --dependency "afterok:${job_extract_reads}" \
         --time 240 \
