@@ -5,6 +5,7 @@ gg:
 	MEMORY_515_806=16000 \
 	MEMORY_FULL=32000 \
 	EVAL_DEPTH=7 \
+	TAX_TYPE=greengenes \
 		./train.sh
 
 silva:
@@ -14,6 +15,7 @@ silva:
 	SOURCE_SEQS=inputs/silva/silva138_99.fna \
 	SOURCE_TAX=inputs/silva/7_level_taxonomy.txt \
 	EVAL_DEPTH=7 \
+	TAX_TYPE=silva \
 		./train.sh
 
 getgg:

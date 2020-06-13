@@ -50,7 +50,7 @@ job_derep_seqs=$(
             qiime rescript dereplicate \
                 --i-sequences "${seqs_515_806_underep}" \
                 --i-taxa "${tax}" \
-                --p-rank-handles "silva" \
+                --p-rank-handles "${TAX_TYPE}" \
                 --p-mode "uniq" \
                 --o-dereplicated-sequences "${seqs_515_806}" \
                 --o-dereplicated-taxa "${tax_515_806}"
