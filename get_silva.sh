@@ -17,6 +17,7 @@ job_get_data=$(
         --parsable \
         --job-name "${CLASSIFIER_NAME}_get_data" \
         --time 90 \
+        --mem 64000 \
         --output "${log_path}" \
             qiime rescript get-silva-data \
                 --p-version "${VERSION}" \
