@@ -19,8 +19,8 @@ job_get_data=$(
         --time 90 \
         --output "${log_path}" \
             qiime rescript get-silva-data \
-                --version "${VERSION}" \
-                --version "${TARGET}" \
+                --p-version "${VERSION}" \
+                --p-target "${TARGET}" \
                 --p-include-species-labels \
                 --o-silva-sequences "${raw_seqs}" \
                 --o-silva-taxonomy "${full_tax}"
