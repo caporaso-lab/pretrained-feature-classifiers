@@ -1,4 +1,4 @@
-.PHONY: gg silva all clean
+.PHONY: gg silva all clean getgg getsilva
 
 gg:
 	CLASSIFIER_NAME=gg-13-8-99 \

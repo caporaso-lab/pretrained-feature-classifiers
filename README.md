@@ -2,8 +2,7 @@
 
 ## Before you begin
 
-1. [Install QIIME 2](https://docs.qiime2.org/)
-2. Install [RESCRIPt](https://github.com/bokulich-lab/RESCRIPt)
+Install [RESCRIPt](https://github.com/bokulich-lab/RESCRIPt)
 
 ## Quickstart
 
