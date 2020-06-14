@@ -12,8 +12,6 @@ silva:
 	CLASSIFIER_NAME=silva-138-99 \
 	MEMORY_515_806=64000 \
 	MEMORY_FULL=64000 \
-	SOURCE_SEQS=inputs/silva/silva138_99.fna \
-	SOURCE_TAX=inputs/silva/7_level_taxonomy.txt \
 	EVAL_DEPTH=7 \
 	TAX_TYPE=silva \
 		./train.sh

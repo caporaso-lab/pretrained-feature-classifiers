@@ -18,7 +18,7 @@ Install [RESCRIPt](https://github.com/bokulich-lab/RESCRIPt)
    from `<prior-session>/outputs/validation-tests` to
    `inputs/validation-tests`. Note: filenames will need to be changed in the
    process. Consult the directory listing example, below.
-5. Run `make all`. GG classifiers should be done in <1hr; Silva <24hrs.
+5. Run `make all`. GG classifiers should be done in <24hr; Silva ~24hrs.
 
 ### Proposed directory listing
 
