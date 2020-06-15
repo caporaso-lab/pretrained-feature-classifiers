@@ -64,7 +64,7 @@ job_train_515_806=$(
         --dependency "afterok:${job_derep_seqs}" \
         --mem "${MEMORY_515_806}" \
         --job-name "${CLASSIFIER_NAME}_train_515_806" \
-        --time 360 \
+        --time 1800 \
         --output "${log_path}" \
             qiime rescript evaluate-fit-classifier \
                 --i-sequences "${seqs_515_806}" \
@@ -79,7 +79,7 @@ job_train_full=$(
         --parsable \
         --mem "${MEMORY_FULL}" \
         --job-name "${CLASSIFIER_NAME}_train_full" \
-        --time 1800 \
+        --time 2880 \
         --output "${log_path}" \
           qiime rescript evaluate-fit-classifier \
               --i-sequences "${seqs}" \
