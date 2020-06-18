@@ -9,6 +9,8 @@ tax_515_806="outputs/intermediate/${CLASSIFIER_NAME}-tax-515-806.qza"
 tax="inputs/${CLASSIFIER_NAME}-tax.qza"
 classifier="outputs/pretrained-classifiers/${CLASSIFIER_NAME}-nb-classifier.qza"
 classifier_515_806="outputs/pretrained-classifiers/${CLASSIFIER_NAME}-515-806-nb-classifier.qza"
+classifier_q2fc="outputs/pretrained-classifiers/${CLASSIFIER_NAME}-nb-classifier-BACKUP-q2fc.qza"
+classifier_515_806_q2fc="outputs/pretrained-classifiers/${CLASSIFIER_NAME}-515-806-nb-classifier-BACKUP-q2fc.qza"
 test_taxonomy="outputs/validation-tests/${CLASSIFIER_NAME}-test-taxonomy.qza"
 test_taxonomy_515_806="outputs/validation-tests/${CLASSIFIER_NAME}-test-515-806-taxonomy.qza"
 eval_taxonomy="outputs/validation-tests/${CLASSIFIER_NAME}-test-taxonomy.qzv"
@@ -64,7 +66,7 @@ job_train_515_806=$(
         --dependency "afterok:${job_derep_seqs}" \
         --mem "${MEMORY_515_806}" \
         --job-name "${CLASSIFIER_NAME}_train_515_806" \
-        --time 1800 \
+        --time 2880 \
         --output "${log_path}" \
             qiime rescript evaluate-fit-classifier \
                 --i-sequences "${seqs_515_806}" \
@@ -79,7 +81,7 @@ job_train_full=$(
         --parsable \
         --mem "${MEMORY_FULL}" \
         --job-name "${CLASSIFIER_NAME}_train_full" \
-        --time 2880 \
+        --time 4320 \
         --output "${log_path}" \
           qiime rescript evaluate-fit-classifier \
               --i-sequences "${seqs}" \
@@ -88,6 +90,42 @@ job_train_full=$(
               --o-evaluation "${crossval_results}" \
               --o-observed-taxonomy "${obs_tax}" \
               --verbose
+)
+
+# Train with q2-feature-classifier as a back-up when time is running short.
+# RESCRIPt uses q2-feature-classifier to train a classifier as part of a longer
+# pipeline that evaluates the classifier — this can take some time as it
+# classifies every sequence in the reference database! Usually greengenes will
+# complete with RESCRIPt in just a few hours (not much longer than with q2-dc),
+# but the long runtimes set above are for the sake of SILVA, which can take a
+# day or a few. The classifiers should give the same results, but RESCRIPt will
+# also output its own validation results to determine overall database quality.
+job_train_515_806=$(
+    sbatch \
+        --parsable \
+        --dependency "afterok:${job_derep_seqs}" \
+        --mem "${MEMORY_515_806}" \
+        --job-name "${CLASSIFIER_NAME}_train_515_806_q2fc" \
+        --time 360 \
+        --output "${log_path}" \
+            qiime feature-classifier fit-classifier-naive-bayes \
+                --i-reference-reads "${seqs_515_806}" \
+                --i-reference-taxonomy "${tax}" \
+                --o-classifier "${classifier_515_806_q2fc}" \
+                --verbose
+)
+job_train_full=$(
+    sbatch \
+        --parsable \
+        --mem "${MEMORY_FULL}" \
+        --job-name "${CLASSIFIER_NAME}_train_full_q2fc" \
+        --time 1440 \
+        --output "${log_path}" \
+            qiime feature-classifier fit-classifier-naive-bayes \
+                --i-reference-reads "${seqs}" \
+                --i-reference-taxonomy "${tax}" \
+                --o-classifier "${classifier_q2fc}" \
+                --verbose
 )
 
 # Test
