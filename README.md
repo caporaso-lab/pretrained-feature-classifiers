@@ -43,3 +43,30 @@
 │   └── validation-tests
 └── train.sh
 ```
+
+## Env
+
+```bash
+export SKL_VERSION='0.23.1'
+export Q2_VERSION='2020.2'
+
+# prep a throwaway env, for extracting explicit package paths
+conda create -n throwaway conda-forge::python==3.6 conda-forge::scikit-learn==$SKL_VERSION
+conda list -n throwaway --explicit | grep 'EXPLICIT\|scikit-learn' > packages.txt
+
+# install base env
+wget https://data.qiime2.org/distro/core/qiime2-$Q2_VERSION-py36-linux-conda.yml
+conda env create -n qiime2-$Q2_VERSION-skl-$SKL_VERSION --file qiime2-$Q2_VERSION-py36-linux-conda.yml
+
+# installed override packages
+conda install -n qiime2-$Q2_VERSION-skl-$SKL_VERSION --file packages.txt
+
+# install rescript
+# TODO: update to show conda install instructions
+conda activate qiime2-$Q2_VERSION-skl-$SKL_VERSION
+pip install git+https://github.com/bokulich-lab/RESCRIPt.git
+
+# clean up
+conda env remove -n throwaway
+rm packages.txt qiime2-$Q2_VERSION-py36-linux-conda.yml
+```
