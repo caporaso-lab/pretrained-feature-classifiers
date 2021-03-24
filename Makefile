@@ -1,22 +1,31 @@
-.PHONY: gg silva all clean
+.PHONY: gg silva all clean getgg getsilva
 
 gg:
 	CLASSIFIER_NAME=gg-13-8-99 \
 	MEMORY_515_806=16000 \
 	MEMORY_FULL=32000 \
-	SOURCE_SEQS=inputs/gg/99_otus.fasta \
-	SOURCE_TAX=inputs/gg/99_otu_taxonomy.txt \
 	EVAL_DEPTH=7 \
+	TAX_TYPE=greengenes \
 		./train.sh
 
 silva:
-	CLASSIFIER_NAME=silva-132-99 \
+	CLASSIFIER_NAME=silva-138-99 \
 	MEMORY_515_806=64000 \
 	MEMORY_FULL=64000 \
-	SOURCE_SEQS=inputs/silva/silva132_99.fna \
-	SOURCE_TAX=inputs/silva/7_level_taxonomy.txt \
 	EVAL_DEPTH=7 \
+	TAX_TYPE=silva \
 		./train.sh
+
+getgg:
+	CLASSIFIER_NAME=gg-13-8-99 \
+		./get_gg.sh
+
+getsilva:
+	VERSION=138 \
+	TARGET=SSURef_NR99 \
+	MEMORY=64000 \
+	CLASSIFIER_NAME=silva-138-99 \
+		./get_silva.sh
 
 all: gg silva
 
