@@ -13,9 +13,9 @@ weights="inputs/${CLASSIFIER_NAME}-weights.qza"
 weights_515_806="inputs/${CLASSIFIER_NAME}-weights-515-806.qza"
 log_path="outputs/logs/%j_%x.txt"
 
-wget https://github.com/BenKaehler/readytowear/blob/master/data/silva_138/515f-806r/average.qza \
+wget "https://github.com/BenKaehler/readytowear/blob/master/data/silva_138/515f-806r/average.qza?raw=true" \
     -O "${weights_515_806}"
-wget https://github.com/BenKaehler/readytowear/blob/master/data/silva_138/full_length/average.qza \
+wget "https://github.com/BenKaehler/readytowear/blob/master/data/silva_138/full_length/average.qza?raw=true" \
     -O "${weights}"
 
 # Import
@@ -24,7 +24,7 @@ job_get_data=$(
         --parsable \
         --job-name "${CLASSIFIER_NAME}_get_data" \
         --time 90 \
-        --mem 64000 \
+        --mem "${MEMORY}" \
         --output "${log_path}" \
             qiime rescript get-silva-data \
                 --p-version "${VERSION}" \
@@ -41,6 +41,7 @@ job_cull_seqs=$(
         --job-name "${CLASSIFIER_NAME}_cull_seqs" \
         --dependency "afterok:${job_get_data}" \
         --time 120 \
+        --mem "${MEMORY}" \
         --output "${log_path}" \
             qiime rescript cull-seqs \
                 --i-sequences "${raw_seqs}" \
