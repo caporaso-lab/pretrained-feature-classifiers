@@ -9,7 +9,14 @@ discarded_seqs="outputs/intermediate/${CLASSIFIER_NAME}-length-discarded-seqs.qz
 seqs="inputs/${CLASSIFIER_NAME}-seqs.qza"
 full_tax="outputs/intermediate/${CLASSIFIER_NAME}-tax-underep.qza"
 tax="inputs/${CLASSIFIER_NAME}-tax.qza"
+weights="inputs/${CLASSIFIER_NAME}-weights.qza"
+weights_515_806="inputs/${CLASSIFIER_NAME}-weights-515-806.qza"
 log_path="outputs/logs/%j_%x.txt"
+
+wget https://github.com/BenKaehler/readytowear/blob/master/data/silva_138/515f-806r/average.qza \
+    -O "${weights_515_806}"
+wget https://github.com/BenKaehler/readytowear/blob/master/data/silva_138/full_length/average.qza \
+    -O "${weights}"
 
 # Import
 job_get_data=$(
