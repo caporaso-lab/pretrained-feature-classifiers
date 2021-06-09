@@ -13,7 +13,7 @@ gg:
 		./train.sh
 
 silva:
-	CLASSIFIER_NAME=silva-138-99 \
+	CLASSIFIER_NAME=silva-138-1-99 \
 	MEMORY_515_806=64000 \
 	MEMORY_FULL=64000 \
 	EVAL_DEPTH=7 \
@@ -29,10 +29,10 @@ getgg:
 		./get_gg.sh
 
 getsilva:
-	VERSION=138 \
+	VERSION=138.1 \
 	TARGET=SSURef_NR99 \
 	MEMORY=64000 \
-	CLASSIFIER_NAME=silva-138-99 \
+	CLASSIFIER_NAME=silva-138-1-99 \
 		./get_silva.sh
 
 all: gg silva
